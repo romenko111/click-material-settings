@@ -1,4 +1,5 @@
 import path from 'path'
+import autoprefixer from 'autoprefixer'
 
 const src = path.resolve(__dirname, 'src')
 const dist = path.resolve(__dirname, 'dist')
@@ -19,6 +20,25 @@ export default {
                 loader: 'babel-loader',
                 test: /\.js[x]?$/,
                 exclude: /node_modules/
+            },
+            {
+                test: /\.(sass|scss)$/,
+                use: [
+                    'style-loader',
+                    {
+                        loader: 'css-loader',
+                        options: { modules: true }
+                    },
+                    'sass-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            plugins: function() {
+                                return [autoprefixer]
+                            }
+                        }
+                    }
+                ]
             }
         ]
     },
