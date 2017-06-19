@@ -7,6 +7,7 @@ import CounterItem from './CounterItem'
 import RadioButton from './RadioButton'
 import CounterButton from './CounterButton'
 import Item from './Item'
+import CloseButton from './CloseButton'
 
 export default class SettingsModal extends React.Component {
 
@@ -43,10 +44,6 @@ export default class SettingsModal extends React.Component {
         this.setState({
             isOpen: false
         })
-
-        if(event && event.stopPropagation) {
-            event.stopPropagation()
-        }
     }
 
     addRadio = (item)=> {
@@ -128,7 +125,7 @@ export default class SettingsModal extends React.Component {
                 parentSelector={this.getParent}
             >
                 <div>
-                    <button onClick={this.close}>閉じる</button>
+                    <CloseButton onClick={this.close} />
                 </div>
 
                 {items}
