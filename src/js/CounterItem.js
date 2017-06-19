@@ -10,6 +10,7 @@ export default class CounterItem extends Item {
         this.value = item.value ? item.value : item.defaultValue
         this.min = item.min ? item.min : 0
         this.max = item.max ? item.max : 100
+        this.step = item.step ? item.step : 1
     }
 
 }

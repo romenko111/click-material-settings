@@ -10,20 +10,33 @@ export default class RadioButton extends React.Component {
         }
     }
 
+    onChange = (event)=> {
+        const value = event.target.value
+
+        this.setState({
+            value: value
+        })
+
+        this.props.onChange({
+            key: this.props.id,
+            value: value
+        })
+    }
+
     render() {
         const inputs = this.props.choices.map((value, index)=> {
             const key = `${this.props.id}-${index}`
 
             return (
-                <span>
-                    <label htmlFor={key}>{value}</label>
+                <span key={key}>
                     <input
                         type="radio"
                         name={key}
                         id={key}
                         value={value}
                         checked={this.state.value === value}
-                        onChange={() => this.setState({value: value})} />
+                        onChange={this.onChange} />
+                    <label htmlFor={key}>{value}</label>
                 </span>
             )
         })
