@@ -2,6 +2,8 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Modal from 'react-modal'
 
+import { EventEmitter } from 'events'
+
 import RadioItem from './RadioItem'
 import CounterItem from './CounterItem'
 import RadioButton from './RadioButton'
@@ -14,6 +16,8 @@ export default class SettingsModal extends React.Component {
     constructor() {
         super()
 
+        Object.assign(this, EventEmitter.prototype)
+
         this.state = {
             isOpen: false,
             items: []
@@ -22,6 +26,16 @@ export default class SettingsModal extends React.Component {
 
     componentWillMount() {
         Modal.setAppElement(this.getParent())
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.isOpen && !this.state.isOpen) {
+            this.emit('close')
+        }
+
+        if (!prevState.isOpen && this.state.isOpen) {
+            this.emit('open')
+        }
     }
 
     getParent = ()=> {
@@ -122,8 +136,8 @@ export default class SettingsModal extends React.Component {
             <Modal
                 isOpen={this.state.isOpen}
                 contentLabel="設定画面"
-                parentSelector={this.getParent}
-            >
+                parentSelector={this.getParent} >
+
                 <div>
                     <CloseButton onClick={this.close} />
                 </div>

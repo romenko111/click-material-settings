@@ -6,6 +6,14 @@ window.addEventListener('load', function() {
         settings.open()
     })
 
+    settings.on('open', function() {
+        console.log('onOpen')
+    })
+
+    settings.on('close', function () {
+        console.log('onClose')
+    })
+
     var color = settings.addRadio({
         title: 'color',
         key: 'color',
