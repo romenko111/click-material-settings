@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "production": "webpack -p && cp ./dist/index.js ./settigs.js",
+    "production": "webpack -p && cp ./dist/index.js ./settings.js",
     "start": "webpack-dev-server -d --hot --inline"
   },
   "author": "",

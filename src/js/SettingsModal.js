@@ -39,10 +39,14 @@ export default class SettingsModal extends React.Component {
         })
     }
 
-    close = ()=> {
+    close = (event)=> {
         this.setState({
             isOpen: false
         })
+
+        if(event && event.stopPropagation) {
+            event.stopPropagation()
+        }
     }
 
     addRadio = (item)=> {
