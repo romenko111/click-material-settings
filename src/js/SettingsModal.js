@@ -92,6 +92,7 @@ export default class SettingsModal extends React.Component {
     render() {
         const items = this.state.items.map((item, index)=> {
             const onChange = (e)=> {
+                item.value = e.value
                 item.emit('settingsChange', e)
             }
 
@@ -104,6 +105,7 @@ export default class SettingsModal extends React.Component {
                             key={item.key}
                             choices={item.choices}
                             defaultValue={item.defaultValue}
+                            value={item.value}
                             onChange={onChange}
                         />
                     )

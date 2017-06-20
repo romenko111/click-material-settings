@@ -6,7 +6,7 @@ export default class RadioButton extends React.Component {
         super(props)
 
         this.state = {
-            value: props.defaultValue
+            value: props.value
         }
     }
 
