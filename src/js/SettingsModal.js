@@ -117,6 +117,7 @@ export default class SettingsModal extends React.Component {
                             id={item.key}
                             key={item.key}
                             defaultValue={item.defaultValue}
+                            value={item.value}
                             min={item.min}
                             max={item.max}
                             step={item.step}

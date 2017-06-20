@@ -6,7 +6,7 @@ export default class CounterButton extends React.Component {
         super(props)
 
         this.state = {
-            value: props.defaultValue
+            value: props.value
         }
     }
 
