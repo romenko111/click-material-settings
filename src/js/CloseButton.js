@@ -1,6 +1,6 @@
 import React from 'react'
 
-import style from '../scss/closebutton.scss'
+import style from '../scss/CloseButton.scss'
 
 export default class CloseButton extends React.Component {
 

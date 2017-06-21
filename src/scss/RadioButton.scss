@@ -1,0 +1,10 @@
+.text {
+    cursor: pointer;
+}
+
+.radioChecked {
+
+    &::before {
+        background-color: green;
+    }
+}

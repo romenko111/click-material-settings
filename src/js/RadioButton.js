@@ -1,5 +1,9 @@
 import React from 'react'
 
+import { RadioGroup, RadioButton as Radio } from 'react-toolbox/lib/radio'
+
+import theme from '../scss/RadioButton.scss'
+
 export default class RadioButton extends React.Component {
 
     constructor(props) {
@@ -10,9 +14,7 @@ export default class RadioButton extends React.Component {
         }
     }
 
-    onChange = (event)=> {
-        const value = event.target.value
-
+    onChange = (value)=> {
         this.setState({
             value: value
         })
@@ -28,23 +30,18 @@ export default class RadioButton extends React.Component {
             const key = `${this.props.id}-${index}`
 
             return (
-                <span key={key}>
-                    <input
-                        type="radio"
-                        name={key}
-                        id={key}
-                        value={value}
-                        checked={this.state.value === value}
-                        onChange={this.onChange} />
-                    <label htmlFor={key}>{value}</label>
-                </span>
+                <Radio
+                    theme={theme}
+                    key={key}
+                    label={value}
+                    value={value} />
             )
         })
 
         return (
-            <div>
+            <RadioGroup value={this.state.value} onChange={this.onChange} >
                 {inputs}
-            </div>
+            </RadioGroup>
         )
     }
 

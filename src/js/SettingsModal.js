@@ -12,6 +12,7 @@ import CounterButton from './CounterButton'
 import Item from './Item'
 import CloseButton from './CloseButton'
 import SelectButton from './SelectButton'
+import ItemTitle from './ItemTitle'
 
 export default class SettingsModal extends React.Component {
 
@@ -155,7 +156,7 @@ export default class SettingsModal extends React.Component {
 
             return (
                 <div key={`settings-${index}`}>
-                    <h2>{item.title}</h2>
+                    <ItemTitle>{item.title}</ItemTitle>
                     {input}
                 </div>
             )
