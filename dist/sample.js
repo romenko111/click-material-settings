@@ -16,7 +16,7 @@ window.addEventListener('load', function() {
 
     var color = settings.addRadio({
         title: 'color',
-        key: 'color 1',
+        key: 'color_1',
         description: 'setumei',
         choices: ['black', 'red', 'green'],
         defaultValue: 'black'
@@ -27,7 +27,7 @@ window.addEventListener('load', function() {
 
     var speed = settings.addCounter({
         title: 'speed',
-        key: 'ball speed',
+        key: 'ball_speed',
         description: 'setumei',
         min: 1,
         max: 10,

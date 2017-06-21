@@ -1,14 +1,12 @@
 import Item from './Item'
+import RadioItem from './RadioItem'
 
-export default class RadioItem extends Item {
+export default class SelectItem extends RadioItem {
 
     constructor(item) {
         super(item)
 
         this.type = Item.Types.SELECT
-        this.defaultValue = item.defaultValue
-        this.value = item.value ? item.value : item.defaultValue
-        this.choices = item.choices
     }
 
 }

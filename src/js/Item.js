@@ -13,7 +13,15 @@ export default class Item extends EventEmitter {
         this.title = item.title
         this.key = item.key
         this.description = item.description
-        this.events = []
+
+        if (!this.validateKey()) {
+            throw new Error(`the key "${this.key}" must begin with a letter ([A-Za-z]) and may be followed by any number of letters, digits ([0-9]), hyphens ("-"), underscores ("_"), colons (":"), and periods (".").`)
+        }
+    }
+
+    validateKey() {
+        const regex = /^[A-Za-z]+[\w\-\:\.]*$/
+        return regex.test(this.key)
     }
 
 }
