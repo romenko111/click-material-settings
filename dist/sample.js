@@ -16,7 +16,7 @@ window.addEventListener('load', function() {
 
     var color = settings.addRadio({
         title: 'color',
-        key: 'color',
+        key: 'color 1',
         description: 'setumei',
         choices: ['black', 'red', 'green'],
         defaultValue: 'black'
@@ -34,6 +34,17 @@ window.addEventListener('load', function() {
         defaultValue: 3
     })
     speed.on('settingsChange', function(event) {
+        console.log(event)
+    })
+
+    var select = settings.addSelect({
+        title: 'select title',
+        key: 'select',
+        description: '',
+        choices: ['select 1', 'select 2', 'select 3'],
+        defaultValue: 'select 1'
+    })
+    select.on('settingsChange', function (event) {
         console.log(event)
     })
 })

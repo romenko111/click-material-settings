@@ -7,9 +7,11 @@ import { EventEmitter } from 'events'
 import RadioItem from './RadioItem'
 import CounterItem from './CounterItem'
 import RadioButton from './RadioButton'
+import SelectItem from './SelectItem'
 import CounterButton from './CounterButton'
 import Item from './Item'
 import CloseButton from './CloseButton'
+import SelectButton from './SelectButton'
 
 export default class SettingsModal extends React.Component {
 
@@ -82,6 +84,17 @@ export default class SettingsModal extends React.Component {
         return counter
     }
 
+    addSelect = (item)=> {
+        if (!this.checkItem(item)) {
+            throw new Error(`key "${item.key}" is already exist`)
+        }
+
+        const select = new SelectItem(item)
+        this.state.items.push(select)
+
+        return select
+    }
+
     checkItem(item) {
         const checkItem = this.state.items.find((element) => {
             return item.key === element.key
@@ -125,10 +138,23 @@ export default class SettingsModal extends React.Component {
                         />
                     )
                     break;
+
+                case Item.Types.SELECT:
+                    input = (
+                        <SelectButton
+                            id={item.key}
+                            key={item.key}
+                            choices={item.choices}
+                            defaultValue={item.defaultValue}
+                            value={item.value}
+                            onChange={onChange}
+                        />
+                    )
+                    break;
             }
 
             return (
-                <div key={item.key}>
+                <div key={`settings-${index}`}>
                     <h2>{item.title}</h2>
                     {input}
                 </div>

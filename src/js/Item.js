@@ -4,7 +4,8 @@ export default class Item extends EventEmitter {
 
     static Types = {
         RADIO: 'settings_types_radio',
-        COUNTER: 'settings_types_counter'
+        COUNTER: 'settings_types_counter',
+        SELECT: 'settings_types_select'
     }
 
     constructor(item) {

@@ -8,7 +8,7 @@
     "production": "npm-run-all production:*",
     "production:build": "webpack -p",
     "production:cp": "cpx ./dist/index.js ./",
-    "production:rename": "rename index.js settings.js",
+    "production:rename": "rename -f index.js settings.js",
     "start": "webpack-dev-server -d --hot --inline"
   },
   "author": "",
