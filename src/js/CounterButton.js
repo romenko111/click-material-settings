@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Slider from 'react-toolbox/lib/slider'
+
 export default class CounterButton extends React.Component {
 
     constructor(props) {
@@ -10,14 +12,15 @@ export default class CounterButton extends React.Component {
         }
     }
 
-    onChange = (event)=> {
-        const value = event.target.value
-
+    onChange = (value)=> {
         this.setState({
             value: value
         })
 
-        this.props.onChange(event)
+        this.props.onChange({
+            key: this.props.id,
+            value: value
+        })
     }
 
     onDownClick = ()=> {
@@ -51,11 +54,13 @@ export default class CounterButton extends React.Component {
 
     render() {
         return (
-            <div>
-                <button onClick={this.onDownClick} disabled={this.state.value === this.props.min}>◁</button>
-                <span>{this.state.value}</span>
-                <button onClick={this.onUpClick} disabled={this.state.value === this.props.max}>▷</button>
-            </div>
+            <Slider
+                min={this.props.min}
+                max={this.props.max}
+                step={this.props.step}
+                value={this.state.value}
+                editable
+                onChange={this.onChange} />
         )
     }
 
