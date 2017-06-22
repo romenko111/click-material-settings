@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import Modal from 'react-modal'
 
 import { EventEmitter } from 'events'
+import { Grid, Row, Col } from 'react-flexbox-grid'
 
 import RadioItem from './RadioItem'
 import CounterItem from './CounterItem'
@@ -155,10 +156,14 @@ export default class SettingsModal extends React.Component {
             }
 
             return (
-                <div key={`settings-${index}`}>
+                <Col
+                    key={`settings-${index}`}
+                    lg={4}
+                    sm={6}
+                    xs={12} >
                     <ItemTitle>{item.title}</ItemTitle>
                     {input}
-                </div>
+                </Col>
             )
         })
 
@@ -168,11 +173,13 @@ export default class SettingsModal extends React.Component {
                 contentLabel="設定画面"
                 parentSelector={this.getParent} >
 
-                <div>
-                    <CloseButton onClick={this.close} />
-                </div>
+                <CloseButton onClick={this.close} />
 
-                {items}
+                <Grid fluid>
+                    <Row>
+                        {items}
+                    </Row>
+                </Grid>
             </Modal>
         )
     }
