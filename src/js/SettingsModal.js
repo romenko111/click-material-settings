@@ -15,6 +15,8 @@ import CloseButton from './CloseButton'
 import SelectButton from './SelectButton'
 import ItemTitle from './ItemTitle'
 
+import modalStyle from '../scss/Modal.scss'
+
 export default class SettingsModal extends React.Component {
 
     constructor() {
@@ -171,7 +173,13 @@ export default class SettingsModal extends React.Component {
             <Modal
                 isOpen={this.state.isOpen}
                 contentLabel="設定画面"
-                parentSelector={this.getParent} >
+                parentSelector={this.getParent}
+                className={{
+                    base: modalStyle.base
+                }}
+                overlayClassName={{
+                    base: modalStyle.overlay
+                }} >
 
                 <CloseButton onClick={this.close} />
 
