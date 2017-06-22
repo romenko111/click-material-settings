@@ -1,9 +1,9 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Modal from 'react-modal'
 
 import { EventEmitter } from 'events'
 import { Grid, Row, Col } from 'react-flexbox-grid'
+import Dialog from 'react-toolbox/lib/dialog'
 
 import RadioItem from './RadioItem'
 import CounterItem from './CounterItem'
@@ -15,7 +15,7 @@ import CloseButton from './CloseButton'
 import SelectButton from './SelectButton'
 import ItemTitle from './ItemTitle'
 
-import modalStyle from '../scss/Modal.scss'
+import dialogStyle from '../scss/Dialog.scss'
 
 export default class SettingsModal extends React.Component {
 
@@ -30,10 +30,6 @@ export default class SettingsModal extends React.Component {
         }
     }
 
-    componentWillMount() {
-        Modal.setAppElement(this.getParent())
-    }
-
     componentDidUpdate(prevProps, prevState) {
         if (prevState.isOpen && !this.state.isOpen) {
             this.emit('close')
@@ -42,10 +38,6 @@ export default class SettingsModal extends React.Component {
         if (!prevState.isOpen && this.state.isOpen) {
             this.emit('open')
         }
-    }
-
-    getParent = ()=> {
-        return document.getElementById(this.props.rootId)
     }
 
     toggle = ()=> {
@@ -170,21 +162,10 @@ export default class SettingsModal extends React.Component {
         })
 
         return (
-            <Modal
-                isOpen={this.state.isOpen}
-                contentLabel="設定画面"
-                parentSelector={this.getParent}
-                closeTimeoutMS={300}
-                className={{
-                    base: modalStyle.base,
-                    afterOpen: modalStyle.baseOpen,
-                    beforeClose: modalStyle.baseClose
-                }}
-                overlayClassName={{
-                    base: modalStyle.overlay,
-                    afterOpen: modalStyle.overlayOpen,
-                    beforeClose: modalStyle.overlayClose
-                }} >
+            <Dialog
+                active={this.state.isOpen}
+                type="fullscreen"
+                theme={dialogStyle} >
 
                 <CloseButton
                     onClick={this.close} />
@@ -194,7 +175,7 @@ export default class SettingsModal extends React.Component {
                         {items}
                     </Row>
                 </Grid>
-            </Modal>
+            </Dialog>
         )
     }
 
