@@ -174,11 +174,16 @@ export default class SettingsModal extends React.Component {
                 isOpen={this.state.isOpen}
                 contentLabel="設定画面"
                 parentSelector={this.getParent}
+                closeTimeoutMS={300}
                 className={{
-                    base: modalStyle.base
+                    base: modalStyle.base,
+                    afterOpen: modalStyle.baseOpen,
+                    beforeClose: modalStyle.baseClose
                 }}
                 overlayClassName={{
-                    base: modalStyle.overlay
+                    base: modalStyle.overlay,
+                    afterOpen: modalStyle.overlayOpen,
+                    beforeClose: modalStyle.overlayClose
                 }} >
 
                 <CloseButton onClick={this.close} />

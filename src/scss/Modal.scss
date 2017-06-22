@@ -11,6 +11,19 @@
     border-radius: 4px;
     outline: none;
     padding: 0;
+    transition: all 0.3s;
+    transform: translateY(-50%);
+    opacity: 0;
+
+    &Open {
+        transform: translateY(0);
+        opacity: 1;
+    }
+
+    &Close {
+        transform: translateY(-50%);
+        opacity: 0;
+    }
 
     @include mq(sm) {
         top: 24px;
@@ -35,4 +48,14 @@
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.4);
     overflow: auto;
+    transition: all 0.3s;
+    opacity: 0;
+
+    &Open {
+        opacity: 1;
+    }
+
+    &Close {
+        opacity: 0;
+    }
 }
