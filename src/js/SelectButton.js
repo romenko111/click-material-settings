@@ -1,5 +1,7 @@
 import React from 'react'
 
+import Dropdown from 'react-toolbox/lib/dropdown'
+
 export default class RadioButton extends React.Component {
 
     constructor(props) {
@@ -10,9 +12,7 @@ export default class RadioButton extends React.Component {
         }
     }
 
-    onChange = (event)=> {
-        const value = event.target.value
-
+    onChange = (value)=> {
         this.setState({
             value: value
         })
@@ -24,29 +24,19 @@ export default class RadioButton extends React.Component {
     }
 
     render() {
-        const options = this.props.choices.map((value, index)=> {
-            const key = `${this.props.id}-${index}`
-
-            return (
-                <option
-                    key={key}
-                    value={value} >
-
-                    {value}
-
-                </option>
-            )
+        const source = this.props.choices.map((choice)=> {
+            return {
+                value: choice,
+                label: choice
+            }
         })
 
         return (
-            <div>
-                <select
-                    name={this.props.id}
-                    value={this.state.value}
-                    onChange={this.onChange} >
-                    {options}
-                </select>
-            </div>
+            <Dropdown
+                source={source}
+                onChange={this.onChange}
+                value={this.state.value}
+            />
         )
     }
 
