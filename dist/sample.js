@@ -48,6 +48,8 @@ window.addEventListener('load', function() {
         console.log(event)
     })
 
+    settings.open()
+
     // settings.addSelect({
     //     title: 'select title',
     //     key: 'select1',

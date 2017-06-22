@@ -186,7 +186,8 @@ export default class SettingsModal extends React.Component {
                     beforeClose: modalStyle.overlayClose
                 }} >
 
-                <CloseButton onClick={this.close} />
+                <CloseButton
+                    onClick={this.close} />
 
                 <Grid fluid>
                     <Row>
