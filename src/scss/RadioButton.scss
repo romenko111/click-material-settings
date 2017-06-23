@@ -1,3 +1,10 @@
 .text {
+    display: inline;
     cursor: pointer;
+    white-space: initial;
+    overflow-wrap: break-word;
+}
+
+.field {
+    height: auto;
 }
